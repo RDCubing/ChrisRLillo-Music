@@ -1,0 +1,75 @@
+﻿<SettingsFlyout
+    x:Class="ChrisRLillo_Music.About"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ChrisRLillo_Music"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    IconSource="Assets/SmallLogo.png"
+    Title="About"
+    d:DesignWidth="346" HeaderBackground="Black">
+    <SettingsFlyout.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#e9f0f3" Offset="0"/>
+            <GradientStop Color="#a2a5ac" Offset="1"/>
+        </LinearGradientBrush>
+    </SettingsFlyout.Background>
+
+    <!-- This StackPanel acts as a root panel for vertical layout of the content sections -->
+    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+
+        <!-- The StackPanel(s) below define individual content sections -->
+
+        <!-- Content Section 1-->
+        <StackPanel Style="{StaticResource SettingsFlyoutSectionStyle}">
+
+            <!-- Section 1 header -->
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="ChrisRLillo Music" FontSize="28"/>
+
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,0,25" FontWeight="Bold" TextWrapping="Wrap">
+                <TextBlock.Text>
+                    ChrisRLillo Music (version 1.2.1.0)
+                </TextBlock.Text>
+            </TextBlock>
+
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,0,25" TextWrapping="Wrap">
+                <TextBlock.Text>
+                    Discover the latest songs, updates, and exclusive content from ChrisRLillo. Explore, enjoy, and stay tuned for more!
+                </TextBlock.Text>
+            </TextBlock>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,0,25" TextWrapping="Wrap">
+                <TextBlock.Text>
+                    This app is made to focus more on design and uses GitHub Gist for simple hosting JSON, unlike the previous, same app maintained by Dank and DraydenYT, which uses non-metro design aesthetics and unreliable servers. The previous app is now called ChrisRLillo Music Legacy.
+                </TextBlock.Text>
+            </TextBlock>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,0,0" TextWrapping="Wrap">
+                <TextBlock.Text>
+                    Collaborated with GDC:
+                </TextBlock.Text>
+            </TextBlock>
+            <HyperlinkButton Content="Join Geek Devs Comm (GDC)"
+                 NavigateUri="https://discord.gg/kYQz5agYtT" />
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" FontStyle="Italic" Margin="0,0,0,0" TextWrapping="Wrap">
+                <TextBlock.Text>
+                    Made by Andrew Simson (AndrewTheGeek)
+                </TextBlock.Text>
+            </TextBlock>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" FontStyle="Italic" Margin="0,0,0,0" TextWrapping="Wrap">
+                <TextBlock.Text>
+                    App updates by Xylo
+                </TextBlock.Text>
+            </TextBlock>
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}" FontStyle="Italic" Margin="0,0,0,0" TextWrapping="Wrap">
+                <TextBlock.Text>
+                    Content by ChrisRLillo
+                </TextBlock.Text>
+            </TextBlock>
+            
+
+        </StackPanel>
+
+        <!-- Define more Content Sections below as necessary -->
+
+    </StackPanel>
+</SettingsFlyout>
