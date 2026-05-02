@@ -8,6 +8,7 @@
     mc:Ignorable="d">
 
     <Page.Resources>
+        <x:String x:Key="ChevronGlyph">&#xE26B;</x:String>
         <Storyboard x:Name="FadeInStoryboard">
 
             <!-- Fade in Title -->
@@ -79,6 +80,11 @@
         <Grid.Background>
             <ImageBrush Stretch="UniformToFill" ImageSource="ms-appx:///Assets/image-1138x759.png"/>
         </Grid.Background>
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
         
 
         <Grid.RowDefinitions>
@@ -132,7 +138,7 @@
                     <TranslateTransform x:Name="MainPanelTransform" X="200"/>
                 </StackPanel.RenderTransform>
                 <!-- Welcome Section -->
-                <Grid Width="400" Margin="0,0,40,0">
+                <Grid Width="400" Margin="50,0,40,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <!-- Title -->
@@ -200,7 +206,7 @@
 
                     </ScrollViewer>
                 </Grid>
-                <Grid Width="400" Margin="0,0,40,0">
+                <Grid Width="500" Margin="50,0,40,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <!-- Title -->
@@ -238,14 +244,14 @@
 
                                 <Grid Margin="0,0,0,15">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="60"/>
+                                        <ColumnDefinition Width="100"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
 
                                     <!-- Thumbnail -->
                                     <Image Source="{Binding ImageUrl}"
-                           Width="50"
-                           Height="50"
+                           Width="75"
+                           Height="75"
                            Stretch="UniformToFill"/>
 
                                     <!-- Text -->
@@ -254,13 +260,15 @@
                                 Margin="10,0,0,0">
 
                                         <TextBlock Text="{Binding Title}"
-                                   FontSize="16"
+                                   FontSize="20"
                                    Foreground="White"
+                                                   FontWeight="Light"
                                    TextTrimming="CharacterEllipsis"/>
 
                                         <TextBlock Text="{Binding Artist}"
-                                   FontSize="12"
+                                   FontSize="16"
                                    Foreground="#BFFFFFFF"
+                                                   FontWeight="Light"
                                    TextTrimming="CharacterEllipsis"/>
 
                                     </StackPanel>
@@ -273,7 +281,7 @@
                     </ListView>
                 </Grid>
 
-                <Grid Width="620" Margin="0,0,40,0">
+                <Grid Width="620" Margin="50,0,40,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <!-- Header -->
@@ -313,12 +321,14 @@
                                     <TextBlock Text="PINNED: Love &amp; Hate Album"
                                FontSize="26"
                                Foreground="White"
+                                               FontWeight="Light"
                                Margin="0,0,0,10"
                                TextWrapping="Wrap"/>
 
                                     <TextBlock Text="Love &amp; Hate (2025) is the debut album by Chilean rock/metal artist Chris R. Lillo, blending intense riffs with personal, bilingual songwriting that explores love, pain, and emotional struggle with raw energy and passion."
                                FontSize="16"
                                Foreground="White"
+                                               FontWeight="Light"
                                TextWrapping="Wrap"/>
 
                                 </StackPanel>
@@ -329,6 +339,7 @@
 
                                 <TextBlock Text="Loading... / Cargando..."
                            FontSize="26"
+                                           FontWeight="Light"
                            Foreground="White"
                            Margin="0,0,0,10"
                            TextWrapping="Wrap"
@@ -336,6 +347,7 @@
 
                                 <TextBlock Text="Loading content... / Cargando contenido..."
                            FontSize="16"
+                                           FontWeight="Light"
                            Foreground="White"
                            TextWrapping="Wrap"
                            x:Name="ContentText"/>
@@ -348,42 +360,61 @@
                 </Grid>
 
 
-                <Grid Width="650" Margin="0,0,40,0">
+                <Grid Width="Auto" Margin="50,0,40,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <!-- Header -->
-                    <TextBlock Text="Featured Videos"
+                    <Button Grid.Row="0"
+        Background="Transparent"
+        BorderThickness="0"
+        HorizontalAlignment="Left"
+        Margin="0,0,0,20"
+        Click="FeaturedVideos_Click">
+
+                        <StackPanel Orientation="Horizontal"
+            VerticalAlignment="Center">
+
+                            <!-- Text -->
+                            <TextBlock Text="Featured Videos"
                FontSize="36"
+                                       x:Uid="ProjectsSection"
                FontWeight="Light"
                Foreground="White"
-               Margin="0,0,0,25"/>
+               VerticalAlignment="Center"/>
+
+                            <!-- Chevron -->
+                            <TextBlock Text="{StaticResource ChevronGlyph}"
+               FontFamily="Segoe MDL2 Assets"
+               FontSize="20"
+               Foreground="White"
+               VerticalAlignment="Center"
+               Margin="10,0,0,0"/>
+                        </StackPanel>
+
+                    </Button>
 
                     <GridView Grid.Row="1"
-          ItemsSource="{Binding FeaturedVideos}"
+          ItemsSource="{Binding FeaturedVideosLimited}"
           ItemClick="GridView_ItemClick"
           IsItemClickEnabled="True"
           SelectionMode="None"
-          ScrollViewer.HorizontalScrollMode="Disabled"
-          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-          ScrollViewer.VerticalScrollMode="Enabled"
-          ScrollViewer.VerticalScrollBarVisibility="Auto">
+          ScrollViewer.HorizontalScrollMode="Enabled"
+          ScrollViewer.HorizontalScrollBarVisibility="Auto"
+          ScrollViewer.VerticalScrollMode="Disabled"
+          ScrollViewer.VerticalScrollBarVisibility="Disabled">
 
                         <GridView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <ItemsWrapGrid
-                Orientation="Horizontal"
-                MaximumRowsOrColumns="2"
-                ItemWidth="320"
-                ItemHeight="180"/>
+                Orientation="Vertical"/>
                             </ItemsPanelTemplate>
                         </GridView.ItemsPanel>
 
                         <GridView.ItemTemplate>
                             <DataTemplate>
-                                <Grid Width="320" Height="180">
+                                <Grid Width="240" Height="135">
                                     <Border Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}">
                                         <Image Source="{Binding ImagePath}" Stretch="UniformToFill"/>
                                     </Border>
@@ -412,36 +443,55 @@
                     </GridView>
 
                 </Grid>
-                <Grid Width="500" Margin="0,0,40,0">
+                <Grid Width="Auto" Margin="50,0,40,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <!-- Header -->
-                    <TextBlock Text="Albums and Singles"
+                    <Button Grid.Row="0"
+        Background="Transparent"
+        BorderThickness="0"
+        HorizontalAlignment="Left"
+        Margin="0,0,0,20"
+        Click="Albums_Click">
+
+                        <StackPanel Orientation="Horizontal"
+            VerticalAlignment="Center">
+
+                            <!-- Text -->
+                            <TextBlock Text="Albums and Singles"
                FontSize="36"
+                                       x:Uid="ProjectsSection"
                FontWeight="Light"
                Foreground="White"
-               Margin="0,0,0,25"/>
+               VerticalAlignment="Center"/>
+
+                            <!-- Chevron -->
+                            <TextBlock Text="{StaticResource ChevronGlyph}"
+               FontFamily="Segoe MDL2 Assets"
+               FontSize="20"
+               Foreground="White"
+               VerticalAlignment="Center"
+               Margin="10,0,0,0"/>
+                        </StackPanel>
+
+                    </Button>
 
                     <GridView Grid.Row="1"
-          ItemsSource="{Binding Albums}"
+          ItemsSource="{Binding AlbumsLimited}"
           ItemClick="GridView1_ItemClick"
           IsItemClickEnabled="True"
           SelectionMode="None"
-          ScrollViewer.HorizontalScrollMode="Disabled"
-          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-          ScrollViewer.VerticalScrollMode="Enabled"
-          ScrollViewer.VerticalScrollBarVisibility="Auto">
+          ScrollViewer.HorizontalScrollMode="Enabled"
+          ScrollViewer.HorizontalScrollBarVisibility="Auto"
+          ScrollViewer.VerticalScrollMode="Disabled"
+          ScrollViewer.VerticalScrollBarVisibility="Disabled">
 
                         <GridView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <ItemsWrapGrid
-                Orientation="Horizontal"
-                MaximumRowsOrColumns="3"
-                ItemWidth="150"
-                ItemHeight="150"/>
+                Orientation="Vertical"/>
                             </ItemsPanelTemplate>
                         </GridView.ItemsPanel>
 
@@ -483,7 +533,7 @@
                     </GridView>
 
                 </Grid>
-                <Grid Width="640" Margin="0,0,40,0">
+                <Grid Width="400" Margin="50,0,40,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
@@ -568,7 +618,7 @@
 
                 </Grid>
 
-                <Grid Width="620" Margin="0,0,40,0">
+                <Grid Width="620" Margin="50,0,40,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>

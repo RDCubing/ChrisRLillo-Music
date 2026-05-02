@@ -43,7 +43,9 @@ namespace ChrisRLillo_Music
         private DispatcherTimer _imageTimer2;
         private int _imageIndex2 = 2;
         public ObservableCollection<VideoItem> FeaturedVideos { get; set; }
+    = new ObservableCollection<VideoItem>();
         public ObservableCollection<AlbumItem> Albums { get; set; }
+        = new ObservableCollection<AlbumItem>();
         private List<Song> playlist = new List<Song>();
         private int currentIndex = -1;
         private bool isPlaying = false;
@@ -195,6 +197,22 @@ namespace ChrisRLillo_Music
 
             this.DataContext = this;
             
+        }
+
+        public IEnumerable<VideoItem> FeaturedVideosLimited
+        {
+            get
+            {
+                return FeaturedVideos.Take(4); // 👈 change 6 to your desired limit
+            }
+        }
+
+        public IEnumerable<AlbumItem> AlbumsLimited
+        {
+            get
+            {
+                return Albums.Take(4); // 👈 change 6 to your desired limit
+            }
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
@@ -622,6 +640,16 @@ namespace ChrisRLillo_Music
             {
                 await Launcher.LaunchUriAsync(new Uri(item.Url));
             }
+        }
+
+        private void FeaturedVideos_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Videos), FeaturedVideos);
+        }
+
+        private void Albums_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Albums), Albums);
         }
     }
 

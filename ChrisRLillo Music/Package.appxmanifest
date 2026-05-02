@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="f26785cd-f0e3-44b5-b63f-73933f2355c1" Publisher="CN=Andrew" Version="1.2.1.0" />
+  <Identity Name="f26785cd-f0e3-44b5-b63f-73933f2355c1" Publisher="CN=Andrew" Version="1.2.26122.0" />
   <Properties>
     <DisplayName>ChrisRLillo Music</DisplayName>
     <PublisherDisplayName>ChrisRLillo &amp; Andrew from GDC</PublisherDisplayName>
